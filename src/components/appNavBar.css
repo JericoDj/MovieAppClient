@@ -1,0 +1,120 @@
+/* Logo Image */
+.logo-img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-logo {
+  gap: 8px;
+}
+
+/* Custom Navbar Background */
+.custom-navbar {
+  background-color: #151012 !important;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+ 
+}
+
+/* General Nav Link Styling */
+.navbar .nav-link.nav-link-custom {
+  font-weight: 400;
+  font-size: 0.95rem;
+  padding: 4px 0;
+  margin: 0 8px;
+  color: #e0e0e0 !important;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.navbar .nav-link.nav-link-custom:hover {
+  color: #ffffff !important;
+}
+
+/* Active NavLink Styling */
+.navbar .nav-link.nav-link-custom.active {
+  color: #fbfbfb !important;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 1.9px solid #163025;
+  border-radius: 2px;
+}
+
+/* Smooth underline hover */
+.navbar .nav-link.nav-link-custom::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #f7f7f7;
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.navbar .nav-link.nav-link-custom:hover::after,
+.navbar .nav-link.nav-link-custom.active::after {
+  width: 100%;
+}
+
+/* Right alignment for desktop */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    flex-grow: 0 !important;
+  }
+  
+  .nav-link-custom {
+    margin: 0 12px !important;
+  }
+  
+  .navbar-nav {
+    align-items: center;
+    padding-right: 1rem;
+  }
+}
+
+/* Mobile menu styling */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: #212121;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+
+  }
+  
+  .nav-link.nav-link-custom {
+    padding: 10px 0;
+    margin: 5px 0;
+    text-align: center;
+  }
+  
+  .navbar-toggler {
+    order: 2;
+    margin-left: auto;
+  }
+}
+
+/* Toggle button styling */
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+ 
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Container adjustments */
+.container-fluid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
