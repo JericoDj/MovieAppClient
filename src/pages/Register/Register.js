@@ -143,7 +143,7 @@ export default function Register() {
               </Form>
 
               <div className="d-flex justify-content-end mt-3">
-                <Link to="/login">Back to Login</Link>
+                <Link to="/login" className="login-link" >Back to Login</Link>
               </div>
             </CardBody>
           </Card>

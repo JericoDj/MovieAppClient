@@ -77,8 +77,8 @@ export default function ForgotPassword() {
                                 </Button>
                             </Form>
                             <div className="d-flex justify-content-between mt-3">
-                                <Link to="/login">Back to Login</Link>
-                                <Link to="/signup">Sign Up</Link>
+                                <Link to="/login" className="login-link">Back to Login</Link>
+                                <Link to="/signup" className="login-link">Sign Up</Link>
                             </div>
                         </CardBody>
                     </Card>

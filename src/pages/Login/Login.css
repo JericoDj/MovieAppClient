@@ -1,0 +1,135 @@
+/* Login.css */
+
+/* Background and Layout */
+.login-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fffde7; /* soft yellow background */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 12px;
+  border: 1px solid #fdd835;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+/* Header Styling */
+.card-header {
+  background-color: #fdd835;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0;
+}
+
+/* Body Styling */
+.card-body {
+  background: white;
+  padding: 2rem 1.5rem;
+}
+
+/* Form Elements */
+.form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #fdd835;
+  box-shadow: 0 0 0 0.2rem rgba(253, 216, 53, 0.25);
+}
+
+/* Button */
+.btn-primary {
+  background-color: #111;
+  border: none;
+  color: #fdd835;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Alert */
+.alert-danger {
+  border-radius: 6px;
+  font-size: 0.95rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+/* Link Styling */
+.login-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.login-links a {
+  color: #fdd835;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.login-links a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Add this to Login.css to style the Register and Forgot Password links */
+
+.login-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.login-link {
+  color: #111;
+  background-color: #fdd835;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-link:hover {
+  background-color: #fbc02d;
+  color: #000;
+  text-decoration: none;
+  transform: translateY(-1px);
+}

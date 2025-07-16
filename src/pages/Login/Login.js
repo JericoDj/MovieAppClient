@@ -14,6 +14,7 @@ import {
     Spinner,
 } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
+import './Login.css';
 
 
 export default function Login() {
@@ -91,10 +92,10 @@ export default function Login() {
                                     {isLoading ? <Spinner animation="border" size="sm" /> : "Login"}
                                 </Button>
                             </Form>
-                            <div className="d-flex justify-content-between mt-3">
-                                <Link to="/register">Register</Link>
-                                <Link to="/forgot-password">Forgot Password?</Link>
-                            </div>
+                          <div className="d-flex justify-content-between mt-3">
+  <Link to="/register" className="login-link">Register</Link>
+  <Link to="/forgot-password" className="login-link">Forgot Password?</Link>
+</div>
                         </CardBody>
                     </Card>
                 </Col>

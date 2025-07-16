@@ -1,35 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { CommentsContext } from "./CommentContext";
+import CommentController from "../controller/CommentController";
 import { MovieContext } from "./MovieContext";
-import CommentController from "../controller/CommentController"; 
 
+export default function CommentProvider({ children }) {
+  const { movies } = useContext(MovieContext);
+  const [commentsByMovie, setCommentsByMovie] = useState({});
+  const [loading, setLoading] = useState(true);
 
+  const fetchAllComments = async () => {
+    const commentMap = {};
+    for (const movie of movies) {
+      try {
+        const res = await CommentController.getComments(movie._id);
+        commentMap[movie._id] = res.comments || [];
+      } catch (err) {
+        console.error(`Failed to fetch comments for movie ${movie._id}`, err);
+      }
+    }
+    setCommentsByMovie(commentMap);
+    setLoading(false);
+  };
 
-export default function CommentProvider({ children }) { 
+  useEffect(() => {
+    if (movies.length > 0) {
+      fetchAllComments();
+    }
+  }, [movies]);
 
-    const [comments, setComments] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    
-    const fetchComments = async (movieId) => {
-        try {
-        const data = await CommentController.getComments(movieId);
-        setComments(data);
-        } catch (error) {
-        console.error("Failed to fetch comments:", error);
-        } finally {
-        setLoading(false);
-        }
-    };
-    
-    useEffect(() => {
-        // Example usage: Fetch comments for a specific movie
-        const movieId = "12345"; // Replace with actual movie ID
-        fetchComments(movieId);
-    }, []);
-    
-    return (
-        <MovieContext.Provider value={{ comments, loading, fetchComments }}>
-        {children}
-        </MovieContext.Provider>
-    );
+  return (
+    <CommentsContext.Provider value={{ commentsByMovie, setCommentsByMovie, loading }}>
+      {children}
+    </CommentsContext.Provider>
+  );
 }

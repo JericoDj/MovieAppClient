@@ -17,7 +17,8 @@ class MovieController {
         
         const data = await response.json();
         console.log(data, "datas");
-        return data;
+        const movies = data.movies;
+        return movies;
     }
 
     static async getMovieById(id) {
@@ -26,16 +27,22 @@ class MovieController {
             headers: this.getAuthHeaders()
         });
         const data = await response.json();
+        console.log("data waited", data);
+    
+   
         return data;
     }
 
     static async addMovie(movie) {
+        console.log("adding movie");
         const response = await fetch(`${API_URL}/addMovie`, {
             method: 'POST',
             headers: this.getAuthHeaders(),
             body: JSON.stringify(movie)
         });
         const data = await response.json();
+        console.log("data waited", data);
+        
         return data;
     }
 
@@ -49,6 +56,12 @@ class MovieController {
     }
 
     static async updateMovie(id, movie) {
+        console.log("updating movie");
+        console.log("movie", movie);
+        console.log("id", id);
+        console.log (localStorage.getItem('token'));
+        
+
         const response = await fetch(`${API_URL}/updateMovie/${id}`, {
           method: "PATCH",
           headers: this.getAuthHeaders(),

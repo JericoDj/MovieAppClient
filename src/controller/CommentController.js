@@ -1,37 +1,44 @@
-const API_URL = "https://movieappapi-tw00.onrender.com/comments";
+const API_URL = "https://movieappapi-tw00.onrender.com/movies";
 
-class CommentController{
+class CommentController {
+  static getAuthHeaders() {
+    return {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    };
+  }
 
-    static getAuthHeaders() {
-        return {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token')
-        };
+  static async getComments(id) {
+    const response = await fetch(`${API_URL}/getComments/${id}`, {
+      method: "GET",
+      headers: this.getAuthHeaders(),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch comments");
+    }
+    return await response.json();
+  }
+  static async createComment(id, comment) {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
+    if (!userData || !userData._id) {
+      throw new Error("User not authenticated");
     }
 
-    static async getComments() {
-        const response = await fetch(`${API_URL}/comments`, {
-            method: 'GET',
-            headers: this.getAuthHeaders()
-        });
+    // Send comment as raw string instead of object
+    const response = await fetch(`${API_URL}/addComment/${id}`, {
+      method: "PATCH",
+      headers: this.getAuthHeaders(),
+      body: JSON.stringify(comment), // Directly stringify the comment string
+    });
 
-        if (!response.ok) {
-            throw new Error('Failed to fetch comments');
-        }
-        return await response.json();
-    }
-    static async createComment(comment) {
-        const response = await fetch(`${API_URL}/comments`, {
-            method: 'POST',
-            headers: this.getAuthHeaders(),
-            body: JSON.stringify(comment)
-        });
-        if (!response.ok) {
-            throw new Error('Failed to create comment');
-        }
-        return await response.json();
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      throw new Error(errorData?.message || "Failed to create comment");
     }
 
+    return await response.json();
+  }
 }
-
 export default CommentController;

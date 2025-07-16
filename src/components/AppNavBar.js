@@ -77,7 +77,7 @@ export default function AppNavBar() {
                 {user?.isAdmin && (
                   <Nav.Link
                     as={NavLink}
-                    to="/admin-dashboard"
+                    to="/movies"
                     className="mx-2 nav-link-custom"
                     onClick={handleNavClick}
                   >

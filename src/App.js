@@ -26,10 +26,16 @@ export default function App() {
       <Route
         path="/movies"
         element={
-          user && user.role === "admin" ? <AdminDashboard /> : <Movies />
+          user && user.isAdmin ?
+          <>
+            <AdminDashboard />
+          </>
+          :
+          <>
+            <Movies />
+          </>
         }
       />
-      <Route path="/admin-dashboard" element={<AdminDashboard />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Home />} />
@@ -52,8 +58,7 @@ export default function App() {
                   <AppRoutes />
                 </main>
       
-      
-        
+    
     </Router>
       </CommentProvider>
         </MovieProvider>
