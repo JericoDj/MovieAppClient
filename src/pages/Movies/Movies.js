@@ -79,10 +79,7 @@ export default function Movies() {
               <span> - {movie.director} ({movie.year})</span>
             </div>
             <div className="movie-description">{movie.description}</div>
-            <div className="form-actions">
-              <button className="btn primary" onClick={() => console.log("Edit logic")}>Edit</button>
-              <button className="btn delete" onClick={() => console.log("Delete logic")}>Delete</button>
-            </div>
+           
 
             <div className="comments-section">
               <ul className="comment-list">
